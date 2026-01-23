@@ -4,7 +4,7 @@
 
 DOG is a feature-rich, user-friendly alternative to the classic cat command, with extra bells, whistles, and a few friendly barks along the way. It's not just a copy,it's an evolution with personality! dog - The Rebellious Cat Clone.
 
-✨ Features That Make You Go "Woof!"
+## ✨ Features That Make You Go "Woof!"
 Comming soon!
 
 ## 🐶 Why "DOG"?
@@ -46,6 +46,14 @@ fish_add_path $HOME/.local/bin
 ```
 
 **Note:** After adding the PATH configuration to bash or zsh configuration files, restart your terminal or run source ~/.bashrc or source ~/.zshrc to apply the changes.
+
+## 🔧 Project Struture
+
+dog/
+├── dev/           # Main package
+│   └── dog.c      # Core functionality
+├── tests/         # Test suite
+└── docs/          # Documentation
 
 ## 📄 License
 
