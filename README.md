@@ -18,9 +18,9 @@ Because in the world of command-line tools, cat has been the beloved pet for dec
 ## 🛠️ Installation
 1. Download install.sh script.
 2. Change the script mode to make install.sh executable:
-...
+'''
 chmod +x install.sh
-...
+'''
 
 ## 📄 License
 
