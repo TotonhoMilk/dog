@@ -50,10 +50,10 @@ fish_add_path $HOME/.local/bin
 ## 🔧 Project Struture
 
 dog/
-├── dev/           # Main package
-│   └── dog.c      # Core functionality
-├── tests/         # Test suite
-└── docs/          # Documentation
+├── dev/           # Main package\
+│   └── dog.c      # Core functionality\
+├── tests/         # Test suite\
+└── docs/          # Documentation\
 
 ## 📄 License
 
