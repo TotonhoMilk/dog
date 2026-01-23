@@ -1,0 +1,6 @@
+# Ignora todos .txt, exceto na pasta docs
+*.txt
+!docs/*.txt
+
+# Ignora arquivos começando com 'test'
+test*
