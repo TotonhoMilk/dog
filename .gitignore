@@ -4,3 +4,6 @@
 
 # Ignora arquivos começando com 'test'
 test*
+
+# Ignora toda pasta test/ em qualquer lugar
+test/
