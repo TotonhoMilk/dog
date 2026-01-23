@@ -18,13 +18,34 @@ Because in the world of command-line tools, cat has been the beloved pet for dec
 ## 🛠️ Installation
 1. Download install.sh script.
 2. Change the script mode to make install.sh executable:
-```
+
 ```
 chmod +x install.sh
 ```
+
+3. To execute, simply run:
+```
+./install.sh
 ```
 
+4. To use the 'dog' program from anywhere in the terminal:
 
+  * For bash, add this line to ~/.bashrc:
+```
+export PATH="$PATH:$HOME/.local/bin"
+```
+
+  * For zsh, add this line to ~/zshrc:
+```
+export PATH="$PATH:$HOME/.local/bin"
+```
+
+  * For fish, run this command in the terminal:
+```
+fish_add_path $HOME/.local/bin
+```
+
+**Note:** After adding the PATH configuration to bash or zsh configuration files, restart your terminal or run source ~/.bashrc or source ~/.zshrc to apply the changes.
 
 ## 📄 License
 
