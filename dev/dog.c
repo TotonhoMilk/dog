@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 // NOTE: Implementação das função print_file().
 int print_file(char *name, int n) {
   printf("+-----------------------------------------------------+\n");
-  printf("| Filename %2d: %-38s |\n", n, name);
+  printf("| Filename %2d: %-38s | WOOF! 🐕✨\n", n, name);
   printf("+-----------------------------------------------------+\n");
 
   FILE *file = fopen(name, "r");
