@@ -1,6 +1,6 @@
 # 🐕 DOG - The Rebellious Cat Clone
 
-Because why should cats have all the fun? 🐾
+**Because why should cats have all the fun? 🐾**
 
 DOG is a feature-rich, user-friendly alternative to the classic cat command, with extra bells, whistles, and a few friendly barks along the way. It's not just a copy,it's an evolution with personality! dog - The Rebellious Cat Clone.
 
@@ -11,16 +11,20 @@ Comming soon!
 
 Because in the world of command-line tools, cat has been the beloved pet for decades. It's time for a friendly, loyal companion who can do tricks you never imagined! DOG is here to fetch your files, roll over with syntax highlighting, and play dead when you press Ctrl+C.
 
-### Remember: Every time you use dog instead of cat, a real dog gets a virtual treat! 🦴
+**Remember:** Every time you use dog instead of cat, a real dog gets a virtual treat! 🦴
 
-### Disclaimer: No cats were harmed in the making of this software. We love cats too! This is just friendly competition. 😸
+**Disclaimer:** No cats were harmed in the making of this software. We love cats too! This is just friendly competition. 😸
 
 ## 🛠️ Installation
-
+1. Download install.sh script.
+2. Change the script mode to make install.sh executable:
+...
+chmod +x install.sh
+...
 
 ## 📄 License
 
-MIT License - see LICENSE file for details.
+Coming Soon!
 
 ## 🙏 Acknowledgments
 
