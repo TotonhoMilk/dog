@@ -9,17 +9,34 @@
 
   Made by Totoño in C, with NeoVim.
  */
+#include "dog_color.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+bool color = true;
 
 // NOTE: Protótipo das funções
 void print_version();
 void print_help();
 int print_file(char *name, int n);
+void print_header(char *name, int n);
 
 // NOTE: Implementação da função main().
 int main(int argc, char *argv[]) {
+  if (*argv[0] == '-') {
+    if (*argv[1] == '-') {
+      // funcao para palavras completas
+    }
+    // fucao para single letters
+    switch (*argv[1]) {
+    case 'V':
+      break;
+    case 'h':
+      break;
+    }
+  }
   if ((strcmp(argv[1], "-V") == 0) || (strcmp(argv[1], "--version") == 0)) {
     print_version();
     return EXIT_SUCCESS;
@@ -41,11 +58,25 @@ int main(int argc, char *argv[]) {
   return EXIT_SUCCESS;
 }
 
+// NOTE: Implementação da função print_header().
+void print_header(char *name, int n) {
+  if (color) {
+    printf("%s+-----------------------------------------------------+%s\n",
+           BG_BLUE, RESET);
+    printf("%s| Filename %2d:%s %-38s %s | %s WOOF! 🐕✨ WOOF!\n", BG_BLUE, n,
+           BG_CYAN, name, BG_BLUE, RESET);
+    printf("%s+-----------------------------------------------------+%s\n",
+           BG_BLUE, RESET);
+  } else {
+    printf("+-----------------------------------------------------+\n");
+    printf("| Filename %2d: %-38s | WOOF! 🐕✨ WOOF!\n", n, name);
+    printf("+-----------------------------------------------------+\n");
+  }
+}
+
 // NOTE: Implementação das função print_file().
 int print_file(char *name, int n) {
-  printf("+-----------------------------------------------------+\n");
-  printf("| Filename %2d: %-38s | WOOF! 🐕✨\n", n, name);
-  printf("+-----------------------------------------------------+\n");
+  print_header(name, n);
 
   FILE *file = fopen(name, "r");
 
