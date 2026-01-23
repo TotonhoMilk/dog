@@ -66,3 +66,14 @@ cd
 rm -rf "$TEMP_DIR"
 
 # TODO: Traduzir para o inglês.
+# TODO: Decobrir qual o shell e colocar no arquivo de Configuração
+# # Função para adicionar sem duplicar
+# add_to_path() {
+#     if [[ -d "$1" ]] && [[ ":$PATH:" != *":$1:"* ]]; then
+#         export PATH="$1:$PATH"
+#     fi
+# }
+#
+# # Uso:
+# add_to_path "$HOME/.local/bin"
+# add_to_path "/usr/local/go/bin"
