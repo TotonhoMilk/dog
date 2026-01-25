@@ -6,106 +6,124 @@
 
   V-0.0.1 - 23/1/2026
   V-0.0.2 - 23/1/2026
+  V-0.0.3 - 25/1/2026
 
-  Made by Totoño in C, with NeoVim.
+  Made by Totoño, written in C, with NeoVim.
  */
-#include "dog_color.h"
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-bool color = true;
+#include "dog.h"
 
-// NOTE: Protótipo das funções
-void print_version();
-void print_help();
-int print_file(char *name, int n);
-void print_header(char *name, int n);
+// NOTE: Flags
+bool is_filename = false;
+bool is_color = false;
+bool is_header = false;
 
-// NOTE: Implementação da função main().
-int main(int argc, char *argv[]) {
-  if (*argv[0] == '-') {
-    if (*argv[1] == '-') {
-      // funcao para palavras completas
-    }
-    // fucao para single letters
-    switch (*argv[1]) {
-    case 'V':
-      break;
-    case 'h':
-      break;
-    }
-  }
-  if ((strcmp(argv[1], "-V") == 0) || (strcmp(argv[1], "--version") == 0)) {
-    print_version();
-    return EXIT_SUCCESS;
-  }
-
-  if ((strcmp(argv[1], "-h") == 0) || (strcmp(argv[1], "--help") == 0)) {
-    print_help();
-    return EXIT_SUCCESS;
-  }
-
-  for (int i = 1; i < argc; i++) {
-    int arquivo = print_file(argv[i], i);
-    if (arquivo == 1) {
-      return EXIT_FAILURE;
-    }
-    printf("\n");
-  }
-
-  return EXIT_SUCCESS;
-}
-
-// NOTE: Implementação da função print_header().
-void print_header(char *name, int n) {
-  if (color) {
-    printf("%s+-----------------------------------------------------+%s\n",
-           BG_BLUE, RESET);
-    printf("%s| Filename %2d:%s %-38s %s | %s WOOF! 🐕✨ WOOF!\n", BG_BLUE, n,
-           BG_CYAN, name, BG_BLUE, RESET);
-    printf("%s+-----------------------------------------------------+%s\n",
-           BG_BLUE, RESET);
-  } else {
-    printf("+-----------------------------------------------------+\n");
-    printf("| Filename %2d: %-38s | WOOF! 🐕✨ WOOF!\n", n, name);
-    printf("+-----------------------------------------------------+\n");
-  }
-}
-
-// NOTE: Implementação das função print_file().
-int print_file(char *name, int n) {
-  print_header(name, n);
-
-  FILE *file = fopen(name, "r");
-
+// NOTE: Função para escrever a versão do dog.
+bool print_version() {
+  FILE *file = fopen("docs/version", "r");
   if (file == NULL) {
-    fprintf(stderr, "Falha ao abrir o arquivo '%s'\n", name);
-    return 1;
+    fprintf(stderr, "Falha ao executar o comando 'version'.\n");
+    return true;
   }
-
   char ch;
   while ((ch = fgetc(file)) != EOF)
     putchar(ch);
-
   fclose(file);
-
-  return 0;
+  return false;
 }
 
-// NOTE: Implementação da função print_version().
-void print_version() { printf("dog 0.0.2\n"); }
-
-// NOTE: Implementação da função print_help().
-void print_help() {
-  printf("A cat(1) clone made by Totoño para toda humanidade.\n\n");
-  printf("Usage: dog [FILE]...\n\n");
-  printf("Arguments:\n\t[FILE]...\n\t\tFile(s) to print.\n\n");
-  printf("Options:\n\t-h, --help\n\t\tPrint help\n\n");
-  printf("\t-v, --version\n\t\tPrint version\n\n");
+// NOTE: Função para escrever o ajuda do dog.
+bool print_help() {
+  FILE *file = fopen("docs/help", "r");
+  if (file == NULL) {
+    fprintf(stderr, "Falha ao executar o comando.\n");
+    return true;
+  }
+  char ch;
+  while ((ch = fgetc(file)) != EOF)
+    putchar(ch);
+  fclose(file);
+  return false;
 }
 
-// TODO: Implementar cores no terminal.
-// TODO: Ajustar o ajuda para cores.
-// TODO: Ajustar o README.md no github.
+// NOTE: Função para escolher e setar os parâmetreos.
+bool set_parameters(char *parameter) {
+  if (strcmp(parameter, "-c") == 0 || strcmp(parameter, "--no-color") == 0) {
+    is_color = true;
+    // printf("\n\n\t\tis_color = true;\n\n\n");
+    return false;
+  }
+  if (strcmp(parameter, "-H") == 0 || strcmp(parameter, "--no-header") == 0) {
+    is_header = true;
+    return false;
+  }
+  if (strcmp(parameter, "-h") == 0 || strcmp(parameter, "--help") == 0) {
+    print_help();
+    return true;
+  }
+  if (strcmp(parameter, "-v") == 0 || strcmp(parameter, "--version") == 0) {
+    print_version();
+    return true;
+  }
+  printf("Parameter '%s' incorrect.\n", parameter);
+  return true;
+}
+
+// NOTE: Função para testar os parâmetros
+bool args_test(int n, char **arg) {
+  for (int i = 1; i < n; i++) {
+    if (arg[i][0] == '-' && is_filename == false) {
+      // printf("Argumento: %-15s --> seta parâmetros\n", arg[i]);
+      if (set_parameters(arg[i]))
+        return true;
+    } else {
+      is_filename = true;
+    }
+    // if (arg[i][0] != '-' && is_filename == true) {
+    //   printf("Argumento: %-15s --> nome\n", arg[i]);
+    // }
+  }
+  return false;
+}
+
+// NOTE: Função para imprimir o cabeçalho.
+bool print_header(int n, char *name) {
+  if (is_header == false) {
+    if (is_color == false) {
+      printf("COLOR\n");
+      printf("+-----------------------------------------------------+\n");
+      printf("| Filename %2d: %-38s | WOOF! 🐕✨ WOOF!\n", n, name);
+      printf("+-----------------------------------------------------+\n");
+    } else {
+      printf("NO COLOR\n");
+      printf("+-----------------------------------------------------+\n");
+      printf("| Filename %2d: %-38s | WOOF! 🐕✨ WOOF!\n", n, name);
+      printf("+-----------------------------------------------------+\n");
+    }
+  }
+  return false;
+}
+
+// NOTE: Função para imprimir os arquivos.
+bool print_file(int n, char **arg) {
+  // TODO: imprimir o cabeçalho.
+  int count_filename = 1;
+  for (int i = 1; i < n; i++) {
+    if (arg[i][0] == '-') {
+      continue;
+    }
+    FILE *file = fopen(arg[i], "r");
+    if (file == NULL) {
+      fprintf(stderr, "Falha ao abrir o arquivo '%s'\n", arg[i]);
+      return true;
+    }
+    print_header(count_filename, arg[i]);
+    char ch;
+    while ((ch = fgetc(file)) != EOF) {
+      putchar(ch);
+    }
+    fclose(file);
+    count_filename++;
+  }
+  return false;
+}

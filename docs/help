@@ -8,7 +8,9 @@ Arguments:
 
 Options:
    -c, --no-color
-          Set color off.
+          Set color off
+   -H, --no-header
+          Set header off
    -h, --help
           Print help
    -v, --version
