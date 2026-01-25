@@ -12,6 +12,9 @@
  */
 
 #include "dog.h"
+#include <stdio.h>
+
+#define VERSION "dog v.0.0.3"
 
 // NOTE: Flags
 bool is_filename = false;
@@ -20,29 +23,27 @@ bool is_header = false;
 
 // NOTE: Função para escrever a versão do dog.
 bool print_version() {
-  FILE *file = fopen("./version", "r");
-  if (file == NULL) {
-    fprintf(stderr, "Falha ao executar o comando 'version'.\n");
-    return true;
-  }
-  char ch;
-  while ((ch = fgetc(file)) != EOF)
-    putchar(ch);
-  fclose(file);
-  return false;
+  printf("%s\n", VERSION);
+  return true;
 }
 
 // NOTE: Função para escrever o ajuda do dog.
 bool print_help() {
-  FILE *file = fopen("./help", "r");
-  if (file == NULL) {
-    fprintf(stderr, "Falha ao executar o comando 'help'.\n");
-    return true;
-  }
-  char ch;
-  while ((ch = fgetc(file)) != EOF)
-    putchar(ch);
-  fclose(file);
+  printf("Dog - The rebellious cat(1) clone.\n\n"
+         "Usage: \tdog [OPTIONS] [FILE]...\n"
+         "\tdog <COMMAND>\n\n"
+         "Arguments:\n"
+         "\t[FILE]... File(s) to print / concatenate. Use '-' for standard "
+         "input.\n\n"
+         "Options:\n"
+         "\t-c, --no-color\n"
+         "\t\tSet color off\n"
+         "\t-H, --no-header\n"
+         "\t\tSet header off\n"
+         "\t-h, --help\n"
+         "\t\tPrint help\n"
+         "\t-v, --version\n"
+         "\t\tPrint version\n");
   return false;
 }
 
@@ -90,7 +91,7 @@ bool args_test(int n, char **arg) {
 bool print_header(int n, char *name) {
   if (is_header == false) {
     if (is_color == false) {
-      printf("COLOR\n");
+      printf("COLOR\n"); // TODO: Colorido.
       printf("+-----------------------------------------------------+\n");
       printf("| Filename %2d: %-38s | WOOF! 🐕✨ WOOF!\n", n, name);
       printf("+-----------------------------------------------------+\n");
@@ -106,7 +107,6 @@ bool print_header(int n, char *name) {
 
 // NOTE: Função para imprimir os arquivos.
 bool print_file(int n, char **arg) {
-  // TODO: imprimir o cabeçalho.
   int count_filename = 1;
   for (int i = 1; i < n; i++) {
     if (arg[i][0] == '-') {
