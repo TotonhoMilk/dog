@@ -7,3 +7,5 @@ test*
 
 # Ignora toda pasta test/ em qualquer lugar
 test/
+
+*.out

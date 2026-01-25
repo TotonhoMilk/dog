@@ -51,7 +51,7 @@ if [[ -f "$OUTPUT_NAME" ]]; then
 
   # Copia os arquivos de ajuda e versão
   # mkdir -p ~/.local/bin/docs
-  cp -r -f help version ~/.local/share/dog/
+  cp -r -f dev/help dev/version ~/.local/share/dog/
 
   echo ""
   echo "📌 Binário instalado em: ~/.local/bin/$OUTPUT_NAME"
