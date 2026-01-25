@@ -20,7 +20,7 @@ bool is_header = false;
 
 // NOTE: Função para escrever a versão do dog.
 bool print_version() {
-  FILE *file = fopen("docs/version", "r");
+  FILE *file = fopen("./docs/version", "r");
   if (file == NULL) {
     fprintf(stderr, "Falha ao executar o comando 'version'.\n");
     return true;
@@ -34,7 +34,7 @@ bool print_version() {
 
 // NOTE: Função para escrever o ajuda do dog.
 bool print_help() {
-  FILE *file = fopen("docs/help", "r");
+  FILE *file = fopen("./docs/help", "r");
   if (file == NULL) {
     fprintf(stderr, "Falha ao executar o comando.\n");
     return true;
