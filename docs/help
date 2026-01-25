@@ -1,0 +1,15 @@
+Dog - The rebellious cat(1) clone.
+
+Usage: dog [OPTIONS] [FILE]...
+       dog <COMMAND>
+
+Arguments:
+   [FILE]... File(s) to print / concatenate. Use '-' for standard input.
+
+Options:
+   -c, --no-color
+          Set color off.
+   -h, --help
+          Print help
+   -v, --version
+          Print version

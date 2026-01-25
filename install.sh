@@ -5,7 +5,7 @@ set -e
 
 # Configuração
 REPO_URL="https://github.com/TotonhoMilk/dog.git"
-SOURCE_FILE="dev/dog.c"
+SOURCE_FILE="dev/main.c"
 OUTPUT_NAME="dog"
 
 # Cores
@@ -49,6 +49,10 @@ if [[ -f "$OUTPUT_NAME" ]]; then
   cp "$OUTPUT_NAME" ~/.local/bin/
   chmod +x ~/.local/bin/"$OUTPUT_NAME"
 
+  # Copia os arquivos de ajuda e versão
+  # mkdir -p ~/.local/bin/docs
+  cp -r -f docs/ ~/.local/bin/
+
   echo ""
   echo "📌 Binário instalado em: ~/.local/bin/$OUTPUT_NAME"
   echo "🚀 Execute com: $OUTPUT_NAME"
@@ -67,6 +71,7 @@ rm -rf "$TEMP_DIR"
 
 # TODO: Traduzir para o inglês.
 # TODO: Decobrir qual o shell e colocar no arquivo de Configuração
+
 # # Função para adicionar sem duplicar
 # add_to_path() {
 #     if [[ -d "$1" ]] && [[ ":$PATH:" != *":$1:"* ]]; then
