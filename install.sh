@@ -45,13 +45,13 @@ if [[ -f "$OUTPUT_NAME" ]]; then
   echo -e "${GREEN}✅ Compilação bem-sucedida!${NC}"
 
   # Instala localmente
-  mkdir -p ~/.local/bin
-  cp "$OUTPUT_NAME" ~/.local/bin/
-  chmod +x ~/.local/bin/"$OUTPUT_NAME"
+  mkdir -p ~/.local/share/dog/
+  cp "$OUTPUT_NAME" ~/.local/share/dog/
+  chmod +x ~/.local/share/dog/"$OUTPUT_NAME"
 
   # Copia os arquivos de ajuda e versão
   # mkdir -p ~/.local/bin/docs
-  cp -r -f docs/ ~/.local/bin/
+  cp -r -f help version ~/.local/share/dog/
 
   echo ""
   echo "📌 Binário instalado em: ~/.local/bin/$OUTPUT_NAME"
