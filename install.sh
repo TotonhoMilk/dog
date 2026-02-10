@@ -49,10 +49,6 @@ if [[ -f "$OUTPUT_NAME" ]]; then
   cp "$OUTPUT_NAME" ~/.local/share/dog/
   chmod +x ~/.local/share/dog/"$OUTPUT_NAME"
 
-  # Copia os arquivos de ajuda e versão
-  # mkdir -p ~/.local/bin/docs
-  cp -r -f dev/help dev/version ~/.local/share/dog/
-
   echo ""
   echo "📌 Binário instalado em: ~/.local/bin/$OUTPUT_NAME"
   echo "🚀 Execute com: $OUTPUT_NAME"
